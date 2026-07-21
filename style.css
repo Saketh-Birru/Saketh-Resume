@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,23 +8,49 @@ html {
     scroll-behavior: smooth;
 }
 
-body{
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: black;
     color: #e7e7e7;
     min-height: 100vh;
-    line-height: 1.5;   
+    line-height: 1.5;
 }
 
-.image-gradient{
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+a:focus-visible,
+button:focus-visible,
+.tag-box .tag:focus-visible {
+    outline: 2px solid #a97fff;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.image-gradient {
     position: absolute;
     top: 0;
     right: 0;
     opacity: 0.5;
     z-index: -1;
+    max-width: 100%;
 }
 
-.layer-blur{
+.layer-blur {
     height: 0;
     width: 30rem;
     position: absolute;
@@ -35,49 +61,85 @@ body{
     z-index: -1;
 }
 
-.container{
+.container {
     width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
 }
 
-header{
+/* ---------- Header / Nav ---------- */
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5rem;
+    position: relative;
 }
 
-header h1{
+header h1.logo {
     margin: 0;
     font-size: 3rem;
     font-weight: 300;
 }
 
-nav{
+nav {
     display: flex;
     align-items: center;
-    gap: 3rem;
-    margin-left: -5%;
+    gap: 2.5rem;
 }
 
-nav a{
-    margin-top: 20px;
+nav a {
     font-size: 1rem;
     letter-spacing: 0.1rem;
     transition: color 0.2s ease;
     text-decoration: none;
     color: inherit;
     z-index: 999;
+    white-space: nowrap;
 }
 
-nav a:hover{
+nav a:hover {
     color: #a7a7a7;
 }
 
-.btn-resume{
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #e7e7e7;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.btn-resume {
     background-color: #ffffff;
     color: black;
     padding: 0.8rem 2rem;
@@ -90,19 +152,19 @@ nav a:hover{
     z-index: 999;
 }
 
-.btn-resume:hover{
+.btn-resume:hover {
     background: #a7a7a7;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: calc(90vh - 6rem);
-
 }
 
-.content{
+/* ---------- About ---------- */
+.content {
     margin-top: 50px;
     margin-bottom: 100px;
     max-width: 40rem;
@@ -110,24 +172,25 @@ main{
     z-index: 999;
 }
 
-.tag-box{
+.tag-box {
     position: relative;
     width: 18rem;
+    max-width: 100%;
     height: 2.5rem;
     border-radius: 50px;
     background: linear-gradient(to right, #656565, #7f42a7, #6600c5, #5300a0, #757575, #656565);
     background-size: 200%;
     animation: animationGradient 2.5s linear infinite;
-    box-shadow: 0 0 15px rgba(225, 225, 225, 0.3);    
+    box-shadow: 0 0 15px rgba(225, 225, 225, 0.3);
 }
 
-@keyframes animationGradient{
-    to{
+@keyframes animationGradient {
+    to {
         background-position: 200%;
     }
 }
 
-.tag-box .tag{
+.tag-box .tag {
     color: #e7e7e7;
     position: absolute;
     inset: 3px 3px 3px 3px;
@@ -138,34 +201,45 @@ main{
     justify-content: center;
     transition: 0.5s ease;
     cursor: pointer;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    padding: 0 0.5rem;
+    text-align: center;
 }
 
-.tag-box .tag:hover{
-    color: #5300a0;
+.tag-box .tag:hover {
+    color: #a97fff;
 }
 
-.content h1{
+.content h1,
+.education h1,
+.education h2,
+.skills h1,
+.projects h1,
+.contact h1 {
     font-size: 4rem;
     font-weight: 600;
     margin: 2rem 0;
     line-height: 1.2;
-    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418); 
+    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
 }
 
-.description{
+.description,
+.details {
     font-size: 1.2rem;
     letter-spacing: 0.05em;
     max-width: 35rem;
     color: gray;
 }
 
-.buttons{
+.buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 3rem;
 }
 
-.btn-get-started{
+.btn-get-started {
     text-decoration: none;
     border: 1px solid #2a2a2a;
     padding: 0.7rem 1.2rem;
@@ -176,11 +250,11 @@ main{
     transition: background-color 0.2s ease;
 }
 
-.btn-get-started:hover{
+.btn-get-started:hover {
     background-color: #1a1a1a;
 }
 
-.btn-contact-main{
+.btn-contact-main {
     text-decoration: none;
     background-color: lightgray;
     color: black;
@@ -192,19 +266,21 @@ main{
     transition: background-color 0.2s ease;
 }
 
-.btn-contact-main:hover{
-    background-color: gray;   
+.btn-contact-main:hover {
+    background-color: gray;
 }
 
-.robot-3d{
+.robot-3d {
     width: 70%;
     height: 120%;
     position: absolute;
     top: -52%;
     right: -2%;
+    pointer-events: none;
 }
 
-.education{
+/* ---------- Education ---------- */
+.education {
     margin-top: 100px;
     max-width: 40rem;
     margin-left: 10%;
@@ -212,30 +288,7 @@ main{
     z-index: 999;
 }
 
-.education h1{
-    font-size: 4rem;
-    font-weight: 600;
-    margin: 2rem 0;
-    line-height: 1.2;
-    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418); 
-}
-
-.details{
-    font-size: 1.2rem;
-    letter-spacing: 0.05em;
-    max-width: 35rem;
-    color: gray;
-}
-
-.education h2{
-    font-size: 4rem;
-    font-weight: 600;
-    margin: 2rem 0;
-    line-height: 1.2;
-    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418); 
-}
-
-.education ul{
+.education ul {
     margin-left: 1.5rem;
     font-size: 1.2rem;
     letter-spacing: 0.05em;
@@ -243,75 +296,77 @@ main{
     color: gray;
 }
 
-.skills{
+/* ---------- Skills ---------- */
+.skills {
     margin-top: 100px;
-    max-width: 40rem;
+    max-width: 80rem;
     margin-left: 10%;
+    margin-right: 10%;
     margin-bottom: 50px;
     z-index: 999;
 }
 
-.skills h1{
-    font-size: 4rem;
-    font-weight: 600;
-    margin: 2rem 0;
-    line-height: 1.2;
-    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418); 
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem 3rem;
+    margin-top: 2rem;
 }
 
-.skills h2{
-    font-size: 2rem;
-    font-weight: 300;
-    margin: 2rem 0;
-    margin-left: 1rem;
-    line-height: 1.2;
-    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418); 
-}
-
-.skills ul{
-    margin-left: 4rem;
-    font-size: 1.2rem;
-    letter-spacing: 0.05em;
-    max-width: 35rem;
-    color: gray;
-}
-.projects {
-    margin-top: 100px;
-    max-width: 80rem;
-    margin-left: 10%;
-    margin-bottom: 100px;
-}
-
-.projects h1 {
-    font-size: 4rem;
-    font-weight: 600;
-    margin: 2rem 0;
+.skills h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
     line-height: 1.2;
     text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
 }
 
+.skills ul {
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    color: gray;
+    margin-left: 1.2rem;
+}
+
+.skills ul li {
+    margin-bottom: 0.3rem;
+}
+
+/* ---------- Projects ---------- */
+.projects {
+    margin-top: 100px;
+    max-width: 80rem;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-bottom: 100px;
+}
+
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
-
 }
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
 .project-item {
     background: #1a1a1a;
     padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(225, 225, 225, 0.1);
     text-align: center;
-    transition: background-color 0.2s;
     transition: background 0.5s, transform 0.5s;
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* align-items: center; */
     height: 100%;
-    position:relative;
-    /* overflow: hidden; */
+    position: relative;
 }
 
 .project-item:hover {
@@ -326,14 +381,16 @@ main{
 .project-item video {
     display: block;
     width: 100%;
-    height: 100px;
+    aspect-ratio: 16 / 10;
+    height: auto;
     border-radius: 10px;
     margin-bottom: 1rem;
     object-fit: cover;
+    background: #0d0d0d;
 }
 
 .project-item h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
     color: #e7e7e7;
 }
@@ -344,20 +401,13 @@ main{
     padding: 0 0.5rem;
 }
 
-.contact{
+/* ---------- Contact ---------- */
+.contact {
     max-width: 40rem;
-    height: 38rem;
     margin-left: 10%;
-    margin-bottom: 50px;
+    margin-right: 5%;
+    margin-bottom: 80px;
     z-index: 999;
-}
-
-.contact h1{
-    font-size: 4rem;
-    font-weight: 600;
-    margin: 2rem 0;
-    line-height: 1.2;
-    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418); 
 }
 
 .contact p {
@@ -366,222 +416,154 @@ main{
     color: #aaa;
 }
 
-.contact-form {
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form.tag-box.tag{
-    width: 20rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 100%;
-    padding: 15px;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    color: #ffffff;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder{
-    color: #666;
-} 
-
-.contact-form.tag-box.tag{
-    color: #e7e7e7;
-    position: absolute;
-    inset: 3px 3px 3px 3px;
-    background-color: black;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.5s ease;
-    cursor: pointer;
-}
-
-.contact-form button{
-    border: none;
-}
-
-.contact-form button:hover {
-    color: #5300a0;
-}
-
 .contact-links {
-    margin-top: 55px;
+    margin-top: 30px;
     font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
 }
 
 .contact-links a {
-    color: #5300a0;
+    color: #a97fff;
     text-decoration: none;
-    margin: 0 10px;
-    margin-top: 10px;
 }
 
 .contact-links a:hover {
     text-decoration: underline;
 }
 
-.tag-box .tag:hover{
-    color: #5300a0;
-}
-.content {
-    margin-bottom: 100px;
-}
-.education {
-    margin-top: 100px;
-}
-/* Mobile and Tablet Responsive Styles */
-@media (max-width: 1024px) {
+/* =========================================================
+   Responsive breakpoints
+   ========================================================= */
 
+/* Tablets and small laptops */
+@media (max-width: 1024px) {
     header {
-        flex-direction: column;
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
     }
 
-    header h1 {
-        font-size: 2.5rem;
-        text-align: center;
+    .nav-toggle {
+        display: flex;
     }
 
     nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
         flex-direction: column;
-        gap: 1.5rem;
-        margin-left: 0;
+        align-items: flex-start;
+        gap: 0;
+        background: #0d0d0d;
+        border: 1px solid #262626;
+        border-radius: 12px;
+        padding: 0.5rem 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
+        margin: 0.5rem 1.5rem 0;
     }
 
-    .content, .education, .skills, .contact {
+    nav.open {
+        max-height: 30rem;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    nav a {
+        width: 100%;
+        padding: 0.9rem 1.5rem;
+    }
+
+    nav a:hover {
+        background: #1a1a1a;
+    }
+
+    .content, .education, .skills, .contact, .projects {
         margin-left: 5%;
         margin-right: 5%;
+        max-width: none;
     }
 
-    .content h1, .education h1, .skills h1, .contact h1 {
+    .content h1, .education h1, .skills h1, .contact h1, .projects h1 {
         font-size: 3rem;
     }
 
-    .education h2, .skills h2 {
+    .education h2 {
         font-size: 1.8rem;
     }
 
-    .description, .details, .education ul, .skills ul, .project-item p {
+    .description, .details, .education ul, .project-item p {
         font-size: 1rem;
     }
 
-    .buttons {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .btn-get-started, .btn-contact-main {
-        width: 100%;
-        text-align: center;
-    }
-
     .robot-3d {
-        width: 100%;
+        width: 60%;
+        max-width: 320px;
         height: auto;
-        position: static;
-        margin-top: 2rem;
+        position: relative;
+        top: 0;
+        right: 0;
+        margin: 2rem auto;
+        display: block;
     }
 
     .project-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form {
-        width: 100%;
-        max-width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 }
 
-/* For very small devices (phones) */
+/* Phones */
 @media (max-width: 600px) {
-
-    header h1 {
+    header h1.logo {
         font-size: 2rem;
     }
 
-    .content h1, .education h1, .skills h1, .contact h1 {
-        font-size: 2.5rem;
+    .content h1, .education h1, .skills h1, .contact h1, .projects h1 {
+        font-size: 2.2rem;
     }
 
-    .education h2, .skills h2 {
-        font-size: 1.5rem;
+    .education h2 {
+        font-size: 1.4rem;
+    }
+
+    .skills h2 {
+        font-size: 1.3rem;
     }
 
     .tag-box {
         width: 100%;
-        height: 2.5rem;
     }
 
     .project-grid {
         grid-template-columns: 1fr;
     }
 
-    .btn-resume {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
+    .buttons {
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .btn-get-started, .btn-contact-main {
-        padding: 0.6rem 1rem;
-        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .robot-3d {
+        width: 80%;
+        max-width: 240px;
     }
 
     .layer-blur {
-        width: 20rem;
-        box-shadow: 0 0 500px 10px white;
+        width: 18rem;
+        box-shadow: 0 0 400px 10px white;
     }
-}
 
-@media (max-width: 1024px) {
-    .robot-3d {
-        width: 70%;
-        max-width: 300px;
-        margin: 2rem auto;
-        display: block;
-        position: relative;
-    }
-}
-
-@media (max-width: 600px) {
-    .robot-3d {
-        width: 90%;
-        max-width: 250px;
-    }
-}
-
-
-@media (max-width: 768px) {
-    header {
+    .contact-links {
         flex-direction: column;
-        align-items: center;
-        padding: 1rem 2rem;
-    }
-
-    nav {
-        flex-direction: column; /* Stack links vertically */
-        gap: 1rem;
-        margin-left: 0;
-        margin-top: 1rem;
-    }
-
-    nav a {
-        margin-top: 0;
-        font-size: 1.1rem;
-    }
-
-    .btn-resume {
-        padding: 0.6rem 1.5rem;
-        font-size: 1rem;
+        gap: 0.75rem;
     }
 }
