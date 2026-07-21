@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saketh Birru — Full Stack Developer & B.Tech CSE student building web apps, games and AI-powered tools.">
     <title>Saketh's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
-    <img class="image-gradient" src="gradient.png" alt="gradient">
+    <img class="image-gradient" src="gradient.png" alt="" aria-hidden="true">
     <div class="layer-blur"></div>
 
     <div class="container">
         <header>
             <h1 data-aos="fade-down" data-aos-duration="1500" class="logo">PORTFOLIO</h1>
-            <nav>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="primaryNav">
                 <a data-aos="fade-down" data-aos-duration="1500" href="#about">ABOUT</a>
                 <a data-aos="fade-down" data-aos-duration="2000" href="#education">EDUCATION</a>
                 <a data-aos="fade-down" data-aos-duration="2500" href="#skills">SKILLS</a>
                 <a data-aos="fade-down" data-aos-duration="3000" href="#projects">PROJECTS</a>
                 <a data-aos="fade-down" data-aos-duration="3000" href="#contact">CONTACT</a>
+                <a data-aos="fade-down" data-aos-duration="3000" href="https://leetcode.com/u/sakethbirru/" target="_blank" rel="noopener">LEETCODE</a>
+                <a data-aos="fade-down" data-aos-duration="3000" href="https://www.geeksforgeeks.org/profile/sakethbl96p?tab=activity" target="_blank" rel="noopener">GFG</a>
             </nav>
-            <!-- <button data-aos="fade-down" data-aos-duration="3000" class="btn-resume">RESUME</button> -->
         </header>
         <br>
 
@@ -40,12 +49,6 @@
                     data-aos-offset="0" data-aos="fade-down" data-aos-duration="2500" class="description">
                     "I’m a Full Stack Developer and a Passionate Problem Solver currently pursuing a B.Tech degree at SR University. I enjoy building web applications that solve real-world problems, from designing sleek frontends to crafting efficient backends."
                 </p>
-
-                <!-- <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="1500" class="buttons">
-                    <a href="https://www.linkedin.com/in/saketh-birru-2648182b9/?originalSubdomain=in" class="btn-get-started">LINKEDIN</a>
-                    <a href="https://github.com/Saketh-Birru" class="btn-contact-main">GITHUB</a>
-                </div> -->
             </div>
             <br>
 
@@ -89,51 +92,53 @@
                 <h1 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
                     data-aos-offset="0" data-aos="fade-down" data-aos-duration="1500">Skills</h1>
 
-                <h2 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="1500">Programming Languages</h2>
-                <ul data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="2000">
-                    <li>Java</li>
-                    <li>Python</li>
-                    <li>C-Language</li>
-                    <li>JavaScript</li>
-                </ul>
+                <div class="skills-grid">
+                    <div class="skill-block" data-aos="fade-up" data-aos-duration="1500">
+                        <h2>Programming Languages</h2>
+                        <ul>
+                            <li>Java</li>
+                            <li>Python</li>
+                            <li>C-Language</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
 
-                <h2 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="2000">Web Development</h2>
-                <ul data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="2000">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                </ul>
+                    <div class="skill-block" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+                        <h2>Web Development</h2>
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
 
-                <h2 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="1500">Database Management</h2>
-                <ul data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="2000">
-                    <li>SQL (MySQL)</li>
-                    <li>Database Design & Normalization</li>
-                </ul>
+                    <div class="skill-block" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                        <h2>Database Management</h2>
+                        <ul>
+                            <li>SQL (MySQL)</li>
+                            <li>Database Design & Normalization</li>
+                        </ul>
+                    </div>
 
-                <h2 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="1500">Computer Science Fundamentals</h2>
-                <ul data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="2000">
-                    <li>Data Structures & Algorithms</li>
-                    <li>Operating Systems Basics</li>
-                    <li>Object Oriented Programming</li>
-                </ul>
+                    <div class="skill-block" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                        <h2>Computer Science Fundamentals</h2>
+                        <ul>
+                            <li>Data Structures & Algorithms</li>
+                            <li>Operating Systems Basics</li>
+                            <li>Object Oriented Programming</li>
+                        </ul>
+                    </div>
 
-                <h2 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="1500">Game Development</h2>
-                <ul data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                    data-aos-offset="0" data-aos="fade-down" data-aos-duration="2000">
-                    <li>Unity Engine (2D & 3D Game Development)</li>
-                    <li>C# Scripting for Gameplay Mechanics</li>
-                    <li>Game Physics & Collision Systems</li>
-                    <li>Scene Management & Game Flow</li>
-                </ul>
+                    <div class="skill-block" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+                        <h2>Game Development</h2>
+                        <ul>
+                            <li>Unity Engine (2D & 3D Game Development)</li>
+                            <li>C# Scripting for Gameplay Mechanics</li>
+                            <li>Game Physics & Collision Systems</li>
+                            <li>Scene Management & Game Flow</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- Projects Section -->
@@ -149,39 +154,51 @@
 
                 <div class="project-grid">
                     <!-- Project 1 -->
-                    <div class="project-item" data-aos="fade-up" data-aos-duration="1500">
-                        <img src="Assets/Portfolio.png" alt="Image">
-                        <h2>Portfolio Website</h2>
-                        <p>A personal 3D Portfolio built using HTML, CSS, and Spline.</p>
-                    </div>
+                    <a href="https://github.com/Saketh-Birru/Saketh-Resume" target="_blank" rel="noopener" class="project-link">
+                        <div class="project-item" data-aos="fade-up" data-aos-duration="1500">
+                            <img src="Assets/Portfolio.png" alt="Portfolio Website preview" loading="lazy">
+                            <h2>Portfolio Website</h2>
+                            <p>A personal 3D Portfolio built using HTML, CSS, and Spline.</p>
+                        </div>
+                    </a>
 
                     <!-- Project 2 -->
-                    <div class="project-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-                        <video autoplay muted loop playsinline>
-                            <source src="Assets/fanta.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <h2>Fanta Animated Landingpage</h2>
-                        <p>An animated front-end wenpage using gsap</p>
-                    </div>
+                    <a href="https://saketh-birru.github.io/Fanta/" target="_blank" rel="noopener" class="project-link">
+                        <div class="project-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                            <video autoplay muted loop playsinline preload="none" aria-label="Fanta animated landing page preview">
+                                <source src="Assets/fanta.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <h2>Fanta Animated Landingpage</h2>
+                            <p>An animated front-end webpage using GSAP.</p>
+                        </div>
+                    </a>
 
                     <!-- Project 3 -->
                     <div class="project-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
-                        <img src="Assets/imgEMS.png" alt="Image">
+                        <img src="Assets/imgEMS.png" alt="Employee Management System preview" loading="lazy">
                         <h2>Employee Management System</h2>
-                        <p>Employee Management System built using Java Swing Concept and MYSQL</p>
+                        <p>Employee Management System built using Java Swing and MySQL.</p>
                     </div>
 
                     <!-- Project 4 -->
                     <div class="project-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-                        <video autoplay muted loop playsinline>
+                        <video autoplay muted loop playsinline preload="none" aria-label="Lagunitas animated landing page preview">
                             <source src="Assets/Lagunitas.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <h2>Lagunitas Animated Landingpage</h2>
-                        <p>An animated front-end Landingpage using HTML CSS JS and gsap</p>
+                        <p>An animated front-end landing page using HTML, CSS, JS and GSAP.</p>
                     </div>
 
+                    <!-- Project 5 -->
+                    <a href="https://ai-resume-roaster-blue.vercel.app/" target="_blank" rel="noopener" class="project-link">
+                        <div class="project-item" data-aos="fade-up" data-aos-duration="1500">
+                            <img src="Assets/AIResumeRoaster.png" alt="AI Resume Roaster preview" loading="lazy">
+                            <h2>AI Resume Roaster</h2>
+                            <p>A full-stack MERN application that uses Google Gemini AI to analyze resumes, featuring JWT authentication, resume versioning with diffing, and rate-limited API endpoints, deployed on Render and Vercel with MongoDB Atlas.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -192,33 +209,18 @@
                     <div class="tag">CONTACT</div>
                 </div>
                 <br>
-                <h1 data-aos="fade-down" data-aos-duration="1500">Get In Touch</h1>
-                <p data-aos="fade-up" data-aos-duration="2000">
-                    Feel free to reach out via emailor connect with me on LinkedIn!
-                </p>
-                <br>
                 <h1 data-aos="fade-down" data-aos-duration="1500">Let's Connect</h1>
 
                 <p data-aos="fade-up" data-aos-duration="2000">
-                    Have a project in mind or just want to say hello? Feel free to reach out!
+                    Have a project in mind or just want to say hello? Feel free to reach out via email or connect with me on LinkedIn.
                 </p>
-
-                <!-- <form class="contact-form" data-aos="fade-up" data-aos-duration="2500">
-                    <input type="text" name="Name" placeholder="Your Name" required />
-                    <input type="email" name="Email" placeholder="Your Email" required />
-                    <textarea name="Message" placeholder="Your Message" rows="5" required></textarea>
-                    <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                        data-aos-offset="0" data-aos="fade-down" data-aos-duration="1500" class="tag-box">
-                        <button class="tag">Send Message</button>
-                    </div>
-                </form> -->
 
                 <div class="contact-links" data-aos="fade-up" data-aos-duration="2500">
                     <a href="mailto:sakethbirru05@gmail.com">sakethbirru05@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/saketh-birru-2648182b9/">LinkedIn</a>
-                    <a href="https://github.com/Saketh-Birru">GitHub</a>
+                    <a href="https://www.linkedin.com/in/saketh-birru-2648182b9/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://github.com/Saketh-Birru" target="_blank" rel="noopener">GitHub</a>
                 </div>
-            </div>  
+            </div>
 
             <!-- 3D Robot Viewer -->
             <spline-viewer data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
@@ -231,8 +233,26 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const primaryNav = document.getElementById('primaryNav');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = primaryNav.classList.toggle('open');
+            navToggle.classList.toggle('open', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu after tapping a link (mobile)
+        primaryNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                primaryNav.classList.remove('open');
+                navToggle.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
     </script>
 </body>
 
 </html>
-
